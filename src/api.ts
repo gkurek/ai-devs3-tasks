@@ -1,6 +1,8 @@
+const URL = import.meta.env.VITE_AIDEVS_URL;
+
 export const getData = async () => {
   try {
-    const response = await fetch("https://poligon.aidevs.pl/dane.txt", {
+    const response = await fetch(`${URL}/dane.txt`, {
       method: "GET",
     });
 
@@ -18,7 +20,7 @@ export const getData = async () => {
 
 export const sendData = async (data: any) => {
   try {
-    const response = await fetch("https://poligon.aidevs.pl/verify", {
+    const response = await fetch(`${URL}/verify`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
