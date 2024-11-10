@@ -3,7 +3,6 @@ import FirecrawlApp from "@mendable/firecrawl-js";
 import OpenAI from "openai";
 import { ref } from "vue";
 
-const url = `https://xyz.ag3nts.org/`;
 const apiKey = import.meta.env.VITE_FIRECRAWL_API_KEY || "";
 const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY || "";
 
@@ -18,7 +17,7 @@ const openai = new OpenAI({
 
 const scrapePromises = async () => {
   try {
-    const response = await firecrawlApp.scrapeUrl(url, {
+    const response = await firecrawlApp.scrapeUrl("/api", {
       formats: ["rawHtml"],
     });
 
@@ -59,7 +58,7 @@ const sendMessageToOpenAI = async (): Promise<void> => {
     console.log("Formularz:", formData);
     console.log("Formularz:", formData.toString());
 
-    const submitResponse = await fetch(url, {
+    const submitResponse = await fetch("/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -84,10 +83,9 @@ const logToPortal = async () => {
   formData.append("answer", "1234");
 
   try {
-    const response = await fetch("https://xyz.ag3nts.org/", {
+    const response = await fetch("/api", {
       method: "POST",
       body: formData,
-      mode: "no-cors", // Add this line
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },

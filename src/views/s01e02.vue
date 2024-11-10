@@ -13,6 +13,7 @@ const flag = ref<string>("");
 const { callOpenAI } = useOpenAI();
 
 const constructPrompt = (question: string): ChatCompletionMessageParam[] => {
+  // refactor to add additional fake knowledge from txt file
   return [
     {
       role: "system",
@@ -68,7 +69,7 @@ const start = async () => {
 
 <template>
   <div>
-    <button @click="start">start</button>
+    <button @click="start">start2</button>
     <div>{{ question }}</div>
     <div>{{ answer }}</div>
     <div>{{ flag }}</div>
