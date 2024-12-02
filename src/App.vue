@@ -22,7 +22,8 @@ const submitData = async () => {
       <router-link to="/s01e01">0101</router-link> |
       <router-link to="/s01e02">0102</router-link> |
       <router-link to="/s01e03">0103</router-link> |
-      <router-link to="/s01e04">0104</router-link>
+      <router-link to="/s01e04">0104</router-link> |
+      <router-link to="/s01e05">0105</router-link>
     </nav>
     <router-view />
   </div>

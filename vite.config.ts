@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
-
+import path from "path";
 console.log("VITE_AGENTS_URL", process.env.VITE_AGENTS_URL);
 
 export default defineConfig(({ mode }) => {
@@ -8,6 +8,11 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [vue()],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
     server: {
       proxy: {
         "/api/centrala": {
