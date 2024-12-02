@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useOpenAI } from "./useOpenAI";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
+import { useSendReport } from "@/computables/useSendReport";
 
 type TestData = {
   question: string;
@@ -22,6 +23,7 @@ type Data = {
 const KEY = import.meta.env.VITE_PERSONAL_API_KEY;
 const flag = ref<string>("");
 const { callOpenAI } = useOpenAI();
+const { sendReport } = useSendReport();
 
 const constructPrompt = (question: string): ChatCompletionMessageParam[] => {
   return [
@@ -65,19 +67,7 @@ const start = async () => {
       ),
     };
 
-    const response2 = await fetch("/api/centrala/report", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        task: "JSON",
-        apikey: import.meta.env.VITE_PERSONAL_API_KEY,
-        answer: processedData,
-      }),
-    });
-
-    const { message } = await response2.json();
+    const { message } = await sendReport("JSON", processedData);
     flag.value = message;
   } catch (error) {
     console.error("Error:", error);
