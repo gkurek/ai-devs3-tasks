@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useOpenAI } from "./useOpenAI";
+import { useOpenAI } from "../composables/useOpenAI";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
-import { useSendReport } from "@/computables/useSendReport";
+import { useSendReport } from "@/composables/useSendReport";
 
 type TestData = {
   question: string;

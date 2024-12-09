@@ -2,7 +2,7 @@
 import OpenAI from "openai";
 import createPrompt from "@/prompts/s01e05";
 import { ref } from "vue";
-import { useSendReport } from "@/computables/useSendReport";
+import { useSendReport } from "@/composables/useSendReport";
 
 // using llama with free tier of openrouter api
 const openai = new OpenAI({

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useOpenAI } from "./useOpenAI";
+import { useOpenAI } from "../composables/useOpenAI";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 
 type Data = {
